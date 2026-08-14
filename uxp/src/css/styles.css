@@ -1,0 +1,365 @@
+/**
+ * PremiereBinBuilder - Styling Sheet (Dark Theme)
+ */
+
+:root {
+  --bg-color: #232323;
+  --panel-bg: #1e1e1e;
+  --text-color: #e2e2e2;
+  --text-muted: #8e8e8e;
+  --border-color: #3e3e3e;
+  --accent-color: #1473e6;
+  --accent-hover: #2680eb;
+  --danger-color: #d7373f;
+  --danger-hover: #e04a50;
+  --input-bg: #151515;
+  --row-hover: #2a2a2a;
+  --row-active: #323232;
+  --tree-line-color: #4a4a4a;
+}
+
+body {
+  margin: 0;
+  padding: 8px 12px;
+  background-color: var(--panel-bg);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Header Setup */
+h2 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin: 0 0 12px 0;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 10px 0;
+}
+
+/* Preset Picker Layout */
+.preset-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+sp-dropdown, sp-picker {
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.preset-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.preset-actions button {
+  flex: 1;
+}
+
+/* Inputs styling */
+.text-input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.text-input:focus {
+  border-color: var(--accent-color);
+}
+
+/* Tree Structure View */
+.bin-structure-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  min-height: 100px;
+  overflow: hidden;
+}
+
+.tree-container {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  background-color: #1a1a1a;
+  border-radius: 4px;
+  padding: 6px;
+  margin-top: 6px;
+}
+
+.tree-empty {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 40px 10px;
+  font-style: italic;
+}
+
+/* Recursive lines & alignments */
+.tree-children {
+  position: relative;
+  margin-left: 17px;
+}
+
+/* Vertical line */
+.tree-children::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  bottom: 12px;
+  left: -8px;
+  width: 1px;
+  background-color: var(--tree-line-color);
+}
+
+.tree-node {
+  position: relative;
+}
+
+/* Horizontal line for children */
+.tree-node::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: -8px;
+  width: 8px;
+  height: 1px;
+  background-color: var(--tree-line-color);
+}
+
+/* Disable connector lines for top-level nodes */
+.tree-node[style*="--depth: 0"]::before,
+.tree-node[style*="--depth:0"]::before {
+  display: none;
+}
+
+.tree-row {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 4px;
+  border-radius: 3px;
+  transition: background-color 0.15s;
+  position: relative;
+}
+
+.tree-row:hover {
+  background-color: var(--row-hover);
+}
+
+.tree-row.is-disabled {
+  opacity: 0.5;
+}
+
+.tree-indent {
+  flex-shrink: 0;
+}
+
+.tree-toggle {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 8px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.tree-toggle:hover {
+  color: #fff;
+}
+
+.tree-toggle.is-empty {
+  cursor: default;
+  visibility: hidden;
+}
+
+.tree-checkbox {
+  margin: 0 6px 0 0;
+  flex-shrink: 0;
+}
+
+.tree-name-input {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 4px;
+  width: 120px;
+  outline: none;
+  border-radius: 2px;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.tree-row:hover .tree-name-input {
+  background-color: var(--input-bg);
+  border-color: #333;
+}
+
+.tree-name-input:focus {
+  background-color: var(--input-bg) !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Node action buttons */
+.tree-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.tree-row:hover .tree-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.action-btn:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+.action-btn.delete-bin-btn:hover {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+/* Footer Section */
+.footer-section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.actions-row {
+  display: flex;
+  gap: 8px;
+}
+
+.actions-row button {
+  flex: 1;
+}
+
+/* Status Box */
+.status-box {
+  background-color: #171717;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.status-success {
+  background-color: rgba(45, 142, 72, 0.15);
+  border-color: rgba(45, 142, 72, 0.4);
+  color: #55c269;
+  font-weight: 500;
+}
+
+.status-error {
+  background-color: rgba(215, 55, 63, 0.15);
+  border-color: rgba(215, 55, 63, 0.4);
+  color: #ff646c;
+  font-weight: 500;
+}
+
+.status-warning {
+  background-color: rgba(212, 125, 22, 0.15);
+  border-color: rgba(212, 125, 22, 0.4);
+  color: #e69d45;
+  font-weight: 500;
+}
+
+.status-info {
+  background-color: rgba(20, 115, 230, 0.15);
+  border-color: rgba(20, 115, 230, 0.4);
+  color: #57a1f5;
+  font-weight: 500;
+}
+
+/* Button override variables for built-in Spectrum UXP Widgets */
+sp-button {
+  margin: 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #3e3e3e;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

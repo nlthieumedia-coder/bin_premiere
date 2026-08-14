@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PremiereBinBuilder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Left Column: Templates List -->
+    <div class="sidebar">
+      <h3>TEMPLATES</h3>
+      <div id="template-list-container" class="template-list scrollable">
+        <!-- Dynamically rendered -->
+      </div>
+      <button id="new-template-btn" class="btn">+ NEW TEMPLATE</button>
+    </div>
+
+    <!-- Right Column: Bins Tree Editor -->
+    <div class="editor-pane">
+      <div class="editor-header">
+        <h2 id="active-template-title">Active Template</h2>
+        <div class="name-edit-row">
+          <input type="text" id="active-template-name-input" placeholder="Template Name..." />
+        </div>
+        <div class="editor-actions">
+          <button id="save-changes-btn" class="btn" disabled>SAVE CHANGES</button>
+          <button id="duplicate-template-btn" class="btn secondary">DUPLICATE</button>
+          <button id="delete-template-btn" class="btn danger">DELETE TEMPLATE</button>
+        </div>
+      </div>
+
+      <div class="bin-tree-wrapper">
+        <div id="bin-tree-container" class="tree-container scrollable">
+          <!-- Dynamically rendered -->
+        </div>
+        <button id="add-root-bin-btn" class="btn secondary">+ Add Root Bin</button>
+      </div>
+
+      <!-- Main Build Action -->
+      <div class="build-section">
+        <button id="create-bins-btn" class="btn cta build-btn">CREATE BINS</button>
+      </div>
+
+      <!-- Footer Status Box -->
+      <div class="status-container">
+        Status: <span id="status-text">Waiting...</span>
+      </div>
+
+      <!-- Collapsible Developer Drawer -->
+      <details class="dev-details">
+        <summary>Developer Debug Actions</summary>
+        <div class="dev-actions">
+          <button id="test-connection-btn" class="btn">TEST CONNECTION</button>
+          <button id="create-test-bin-btn" class="btn">CREATE TEST BIN</button>
+          <button id="create-test-tree-btn" class="btn">CREATE TEST TREE</button>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Custom Unsaved Changes Modal Dialog -->
+  <div id="unsaved-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h4>Unsaved Changes</h4>
+      <p>Save before switching templates?</p>
+      <div class="modal-actions">
+        <button id="modal-save-btn" class="btn cta">SAVE</button>
+        <button id="modal-discard-btn" class="btn danger">DISCARD</button>
+        <button id="modal-cancel-btn" class="btn secondary">CANCEL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CEP CSInterface and App Logic -->
+  <script src="CSInterface.js"></script>
+  <script src="storageService.js"></script>
+  <script src="templateService.js"></script>
+  <script src="templateUI.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

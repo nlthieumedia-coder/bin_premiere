@@ -1,0 +1,8 @@
+# Temporary files and logs
+*_temp*
+*.log
+.gemini/
+scratch/
+test_*.js
+*.zip
+*.rar

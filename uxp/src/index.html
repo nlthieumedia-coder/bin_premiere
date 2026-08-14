@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PremiereBinBuilder</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h2>PremiereBinBuilder</h2>
+  <div class="subtitle">Premiere Project Setup</div>
+
+  <!-- Preset Selector & Management -->
+  <div class="preset-section">
+    <div class="form-group">
+      <label class="form-label" for="preset-dropdown">Select Preset</label>
+      <sp-dropdown id="preset-dropdown">
+        <!-- Will be dynamically populated by ui.js -->
+      </sp-dropdown>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="preset-name-input">Preset Name</label>
+      <input type="text" id="preset-name-input" class="text-input" placeholder="Enter Preset Name..." />
+    </div>
+
+    <div class="preset-actions">
+      <sp-button id="save-preset-btn" variant="secondary" size="s">Save</sp-button>
+      <sp-button id="duplicate-preset-btn" variant="secondary" size="s">Duplicate</sp-button>
+      <sp-button id="delete-preset-btn" variant="warning" size="s">Delete</sp-button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Bin Tree Editor -->
+  <div class="bin-structure-section">
+    <label class="form-label">Bin Structure</label>
+    <div id="bin-tree-container" class="tree-container">
+      <!-- Will be dynamically populated by ui.js -->
+    </div>
+  </div>
+
+  <!-- Bottom Panel Actions -->
+  <div class="footer-section">
+    <div class="actions-row">
+      <sp-button id="add-top-bin-btn" variant="secondary" quiet style="flex: 1;">+ Add Top-Level Bin</sp-button>
+      <sp-button id="capture-current-btn" variant="secondary" style="flex: 1;">Capture Current</sp-button>
+    </div>
+
+    <sp-button id="create-bins-btn" variant="cta" style="width: 100%;">Create Bins</sp-button>
+    
+    <!-- Status Display -->
+    <div id="status-container" class="status-box">Ready</div>
+  </div>
+
+  <!-- Core Services and Scripts -->
+  <script src="js/storageService.js"></script>
+  <script src="data/defaultPresets.js"></script>
+  <script src="js/presetService.js"></script>
+  <script src="js/premiere.js"></script>
+  <script src="js/binService.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
